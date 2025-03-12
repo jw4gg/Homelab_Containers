@@ -2,7 +2,7 @@
 version: "2.1"
 services:
   jackett:
-    image: lscr.io/linuxserver/jackett:v0.22.1336
+    image: jackett:0.22.1336
 
     container_name: jackett
     environment:
