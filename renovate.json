@@ -3,7 +3,10 @@
   "extends": [
     "config:recommended"
   ],
-  "docker": {
-    "fileMatch": ["\\.yaml$"]
-  }
+  "prHeader": "jw4gg header",
+    "assignees": [
+    "jw4gg"
+      
+  ]
+  
 }
