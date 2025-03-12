@@ -1,7 +1,17 @@
 ---
 services:
   jacket:
-    image: linuxserver/jackett:0.22.1589
+    image: linuxserver/jackett:v0.22.1576
+    container_name: jackett
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=HST
+      - AUTO_UPDATE=true #optional
+      - RUN_OPTS= #optional
+    volumes:
+      - /path/to/data:/config
+      - /path/to/blackhole:/downloads
     ports:
-      - 8080:80
+      - 9117:9117
     restart: unless-stopped
