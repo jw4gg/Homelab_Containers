@@ -1,0 +1,16 @@
+---
+version: "2.1"
+services:
+  heimdall:
+    image: ghcr.io/linuxserver/heimdall:2.6.3
+    container_name: heimdall
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=HST
+    volumes:
+      - E:\Docker\heimdall\config:/config
+    ports:
+      - 11080:80
+      - 11443:443
+    restart: always
