@@ -1,0 +1,107 @@
+services:
+  gluetun:
+    image: qmcgaw/gluetun:v3.39
+    container_name: gluetun
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    ports:
+      - 8080:8080 # qbittorrent web interface
+      - 6881:6881 # qbittorrent torrent port
+      - 9696:9696 # prowlarr
+    volumes:
+      - /docker/gluetun:/gluetun
+    environment:
+      - VPN_SERVICE_PROVIDER=ipvanish
+      - OPENVPN_USER=waggoner28@gmail.com
+      - OPENVPN_PASSWORD=9652crisswell!
+      - SERVER_COUNTRIES=United States
+    healthcheck:
+      test: ping -c 1 www.google.com || exit 1
+      interval: 60s
+      timeout: 20s
+      retries: 5
+    restart: unless-stopped
+
+  deunhealth:
+    image: qmcgaw/deunhealth:v0.3.0
+    container_name: deunhealth
+    network_mode: "none"
+    environment:
+      - LOG_LEVEL=info
+      - HEALTH_SERVER_ADDRESS=127.0.0.1:9999
+      - TZ=HST
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+# Healthcheck was added to work with deunhealth to restart container
+# on unhealthy status. labels allows deunhealth to monitor.
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:5.0.3
+    container_name: qbittorrent
+    restart: unless-stopped
+    labels:
+      - deunhealth.restart.on.unhealthy= "true"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=HST
+      - WEBUI_PORT=8080
+      - TORRENTING_PORT=6881
+    volumes:
+      - E:\Docker\qbittorrent:/config
+      - /data:/data
+    network_mode: service:gluetun
+    healthcheck:
+        test: ping -c 1 www.google.com || exit 1
+        interval: 60s
+        retries: 3
+        start_period: 20s
+        timeout: 10s
+        
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:1.31.1
+    container_name: prowlarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=HST
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - E:\Docker\prowlarr:/config
+    restart: unless-stopped
+    network_mode: service:gluetun
+
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:4.0.13
+    container_name: sonarr
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=HST
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - E:\Docker\sonarr\data:/config
+      - F:\Plex Media\TV Series:/tv #optional
+      #- /path/to/downloadclient-downloads:/downloads #optional
+    ports:
+      - 8989:8989
+
+  radarr:
+    image: lscr.io/linuxserver/radarr:5.19.3
+    container_name: radarr
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=HST
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - E:\Docker\radarr\data:/config
+      - F:\Plex Media\Movies:/movies #optional
+      #- /path/to/download-client-downloads:/downloads #optional
+    ports:
+      - 7878:7878
