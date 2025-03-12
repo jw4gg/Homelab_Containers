@@ -3,7 +3,7 @@
   "extends": [
     "config:recommended"
   ],
-  "prHeader": "jw4gg header",
+  "prHeader": "Homelab Containers",
     "assignees": [
     "jw4gg"
       
