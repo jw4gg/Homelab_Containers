@@ -15,8 +15,8 @@ services:
         - /docker/gluetun:/gluetun
       environment:
         - VPN_SERVICE_PROVIDER=ipvanish
-        - OPENVPN_USER=waggoner28@gmail.com
-        - OPENVPN_PASSWORD=waggoner28@gmail.com
+        - OPENVPN_USER=abc
+        - OPENVPN_PASSWORD=abc
         - SERVER_COUNTRIES=United States
       healthcheck:
         test: ping -c 1 www.google.com || exit 1
