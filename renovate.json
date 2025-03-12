@@ -4,6 +4,6 @@
     "config:recommended"
   ],
   "docker": {
-    "fileMatch":["\\.yaml$"]
+    "fileMatch": ["\\.yaml$"]
   }
 }
