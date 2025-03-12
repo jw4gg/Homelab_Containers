@@ -1,0 +1,14 @@
+---
+services:
+  prowlarr:
+      image: lscr.io/linuxserver/prowlarr:1.31.1
+      container_name: prowlarr
+      environment:
+        - PUID=1000
+        - PGID=1000
+        - TZ=HST
+      volumes:
+        - /etc/localtime:/etc/localtime:ro
+        - E:\Docker\prowlarr:/config
+      restart: unless-stopped
+      network_mode: service:gluetun
