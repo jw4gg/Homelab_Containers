@@ -53,6 +53,8 @@ services:
       - TORRENTING_PORT=6881
     volumes:
       - E:\Docker\qbittorrent:/config
+      - F:\Plex Media\Movies:/movies #location for movies
+      - F:\Plex Media\TV Series:/tv #location for tv series
       - /data:/data
     network_mode: service:gluetun
     healthcheck:
