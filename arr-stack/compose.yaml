@@ -13,13 +13,13 @@ services:
     volumes:
       - /docker/gluetun:/gluetun
     environment:
+      - WIREGUARD_PRIVATE_KEY=$PVK
+      - WIREGUARD_ADDRESSES=$ADD
+      - WIREGUARD_PUBLIC_KEY=$PBK
+      - WIREGUARD_ENDPOINT_IP=$EPIP
+      - WIREGUARD_ENDPOINT_PORT=$EPP
       - VPN_SERVICE_PROVIDER=custom
       - VPN_TYPE=wireguard
-      - WIREGUARD_PRIVATE_KEY=${PVK}
-      - WIREGUARD_ADDRESSES=${ADD}
-      - WIREGUARD_PUBLIC_KEY=${PBK}
-      - WIREGUARD_ENDPOINT_IP=${EPIP}
-      - WIREGUARD_ENDPOINT_PORT=${EPP}
     healthcheck:
       test: ping -c 1 www.google.com || exit 1
       interval: 60s
