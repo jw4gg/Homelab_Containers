@@ -13,6 +13,7 @@ services:
     volumes:
       - /docker/gluetun:/gluetun
     environment:
+      - VPN_SERVICE_PROVIDER=custom
       - WIREGUARD_PRIVATE_KEY=$PVK
       - WIREGUARD_ADDRESSES=$ADD
       - WIREGUARD_PUBLIC_KEY=$PBK
