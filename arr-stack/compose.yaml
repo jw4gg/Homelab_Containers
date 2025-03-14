@@ -1,7 +1,7 @@
 services:
   gluetun:
     image: qmcgaw/gluetun:v3.40
-    container_name: gluetun-stacktest
+    container_name: gluetun-wireguard
     cap_add:
       - NET_ADMIN
     devices:
@@ -13,10 +13,11 @@ services:
     volumes:
       - /docker/gluetun:/gluetun
     environment:
-      - VPN_SERVICE_PROVIDER=ipvanish
-      - OPENVPN_USER=$USER
-      - OPENVPN_PASSWORD=$PASS
-      - SERVER_COUNTRIES=United States
+      - WIREGUARD_PRIVATE_KEY=$PVK
+      - WIREGUARD_ADDRESSES=$ADD
+      - WIREGUARD_PUBLIC_KEY=$PBK
+      - WIREGUARD_ENDPOINT_IP=$EPIP
+      - WIREGUARD_ENDPOINT_PORT=$EPP
     healthcheck:
       test: ping -c 1 www.google.com || exit 1
       interval: 60s
