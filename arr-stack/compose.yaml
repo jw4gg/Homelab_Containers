@@ -1,31 +1,31 @@
 services:
-  gluetun:
-    image: qmcgaw/gluetun:v3.40
-    container_name: gluetun-wireguard
-    cap_add:
-      - NET_ADMIN
-    devices:
-      - /dev/net/tun:/dev/net/tun
-    ports:
-      - 8080:8080 # qbittorrent web interface
-      - 6881:6881 # qbittorrent torrent port
-      - 9696:9696 # prowlarr
-    volumes:
-      - /docker/gluetun:/gluetun
-    environment:
-      - WIREGUARD_PRIVATE_KEY=$PVK
-      - WIREGUARD_ADDRESSES=$ADD
-      - WIREGUARD_PUBLIC_KEY=$PBK
-      - WIREGUARD_ENDPOINT_IP=$EPIP
-      - WIREGUARD_ENDPOINT_PORT=$EPP
-      - VPN_SERVICE_PROVIDER=custom
-      - VPN_TYPE=wireguard
-    healthcheck:
-      test: ping -c 1 www.google.com || exit 1
-      interval: 60s
-      timeout: 20s
-      retries: 5
-    restart: unless-stopped
+  #gluetun:
+    #image: qmcgaw/gluetun:v3.40
+   # container_name: gluetun-wireguard
+    #cap_add:
+    #  - NET_ADMIN
+    #devices:
+    #  - /dev/net/tun:/dev/net/tun
+    #ports:
+     # - 8080:8080 # qbittorrent web interface
+      #- 6881:6881 # qbittorrent torrent port
+      #- 9696:9696 # prowlarr
+    #volumes:
+      #- /docker/gluetun:/gluetun
+    #environment:
+      #- WIREGUARD_PRIVATE_KEY=$PVK
+      #- WIREGUARD_ADDRESSES=$ADD
+     # - WIREGUARD_PUBLIC_KEY=$PBK
+     # - WIREGUARD_ENDPOINT_IP=$EPIP
+      #- WIREGUARD_ENDPOINT_PORT=$EPP
+      #- VPN_SERVICE_PROVIDER=custom
+      #- VPN_TYPE=wireguard
+    #healthcheck:
+      #test: ping -c 1 www.google.com || exit 1
+      #interval: 60s
+      #timeout: 20s
+      #retries: 5
+    #restart: unless-stopped
 
   deunhealth:
     image: qmcgaw/deunhealth:v0.3.0
@@ -55,11 +55,11 @@ services:
       - WEBUI_PORT=8080
       - TORRENTING_PORT=6881
     volumes:
-      - E:\Docker\qbittorrent:/config
-      - F:\Plex Media\Movies:/movies #location for movies
-      - F:\Plex Media\TV Series:/tv #location for tv series
+      - /docker/qbtorrent:/config
+      - /mnt/plex/data/Movies:/movies #location for movies
+      - /mnt/plex/data/'TV Series':/tv #location for tv series
       - /data:/data
-    network_mode: service:gluetun
+    #network_mode: service:gluetun
     healthcheck:
         test: ping -c 1 www.google.com || exit 1
         interval: 60s
@@ -76,9 +76,9 @@ services:
       - TZ=HST
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - E:\Docker\prowlarr:/config
+      - /docker/prowlarr:/config
     restart: unless-stopped
-    network_mode: service:gluetun
+    #network_mode: service:gluetun
 
   sonarr:
     image: lscr.io/linuxserver/sonarr:4.0.14
@@ -90,8 +90,8 @@ services:
       - TZ=HST
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - E:\Docker\sonarr\data:/config
-      - F:\Plex Media\TV Series:/tv #optional
+      - /docker/sonarr:/config
+      - /mnt/plex/data/'TV Series':/tv #optional
       #- /path/to/downloadclient-downloads:/downloads #optional
     ports:
       - 8989:8989
@@ -106,8 +106,8 @@ services:
       - TZ=HST
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - E:\Docker\radarr\data:/config
-      - F:\Plex Media\Movies:/movies #optional
+      - /docker/radarr:/config
+      - /mnt/plex/data/Movies:/movies #optional
       #- /path/to/download-client-downloads:/downloads #optional
     ports:
       - 7878:7878
