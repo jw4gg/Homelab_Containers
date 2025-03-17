@@ -57,7 +57,7 @@ services:
     volumes:
       - /docker/qbtorrent:/config
       - /mnt/plex/data/Movies:/movies #location for movies
-      - /mnt/plex/data/'TV Series':/tv #location for tv series
+      - /mnt/plex/data/TV Series:/tv #location for tv series
       - /data:/data
     #network_mode: service:gluetun
     healthcheck:
@@ -91,7 +91,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /docker/sonarr:/config
-      - /mnt/plex/data/'TV Series':/tv #optional
+      - /mnt/plex/data/TV Series:/tv #optional
       #- /path/to/downloadclient-downloads:/downloads #optional
     ports:
       - 8989:8989
