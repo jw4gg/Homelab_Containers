@@ -56,7 +56,7 @@ services:
       - TORRENTING_PORT=6881
     volumes:
       - /docker/qbtorrent:/config
-      - /downloads:/downloads #location for movies
+      - /mnt/downloads:/downloads #location for downloads
       - /data:/data
     ports:
       - 8080:8080 # qbittorrent web interface
