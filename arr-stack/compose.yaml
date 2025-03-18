@@ -59,6 +59,9 @@ services:
       - /mnt/plex/data/Movies:/movies #location for movies
       - /mnt/plex/data/TV Series:/tv #location for tv series
       - /data:/data
+    ports:
+      - 8080:8080 # qbittorrent web interface
+      - 6881:6881 # qbittorrent torrent port
     #network_mode: service:gluetun
     healthcheck:
         test: ping -c 1 www.google.com || exit 1
@@ -77,6 +80,8 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /docker/prowlarr:/config
+    ports:
+      - 9696:9696 # prowlarr
     restart: unless-stopped
     #network_mode: service:gluetun
 
