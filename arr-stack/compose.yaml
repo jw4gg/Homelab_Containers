@@ -101,7 +101,7 @@ services:
       - 8989:8989
 
   radarr:
-    image: lscr.io/linuxserver/radarr:5.19.3
+    image: lscr.io/linuxserver/radarr:5.20.2
     container_name: radarr
     restart: unless-stopped
     environment:
