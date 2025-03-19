@@ -96,7 +96,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /docker/sonarr:/config
       - /mnt//TV Series:/tv #optional
-      #- /path/to/downloadclient-downloads:/downloads #optional
+      - /mnt/downloads:/downloads #location for downloads
     ports:
       - 8989:8989
 
@@ -112,6 +112,6 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /docker/radarr:/config
       - /mnt//Movies:/movies #optional
-      #- /path/to/download-client-downloads:/downloads #optional
+      - /mnt/downloads:/downloads #location for downloads
     ports:
       - 7878:7878
