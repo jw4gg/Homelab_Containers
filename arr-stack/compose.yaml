@@ -95,7 +95,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /docker/sonarr:/config
-      - /mnt/plex/data/TV Series:/tv #optional
+      - /mnt//TV Series:/tv #optional
       #- /path/to/downloadclient-downloads:/downloads #optional
     ports:
       - 8989:8989
@@ -111,7 +111,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /docker/radarr:/config
-      - /mnt/plex/data/Movies:/movies #optional
+      - /mnt//Movies:/movies #optional
       #- /path/to/download-client-downloads:/downloads #optional
     ports:
       - 7878:7878
