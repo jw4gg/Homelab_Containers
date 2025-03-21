@@ -12,6 +12,6 @@ services:
       - /docker/homeassistant/data:/config
     ports:
       - 8123:8123 #optional
-    devices:
+    #devices:
       #- /path/to/device:/path/to/device #optional
     restart: unless-stopped
