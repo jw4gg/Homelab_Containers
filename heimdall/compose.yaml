@@ -2,7 +2,7 @@
 version: "2.1"
 services:
   heimdall:
-    image: ghcr.io/linuxserver/heimdall:2.6.3
+    image: ghcr.io/linuxserver/heimdall:v2.6.3-ls304
     container_name: heimdall
     environment:
       - PUID=1000
