@@ -70,7 +70,7 @@ services:
         timeout: 10s
     
   prowlarr:
-    image: lscr.io/linuxserver/prowlarr:1.35.1.5034-ls118
+    image: lscr.io/linuxserver/prowlarr:1.36.3.5071-ls119
     container_name: prowlarr
     environment:
       - PUID=1000
