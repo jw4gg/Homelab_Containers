@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  rustdesk-hbbs:
+    image: rustdesk/rustdesk-server:1.1.14
+    container_name: rustdesk-hbbs
+    restart: unless-stopped
+    network_mode: host
+    command: hbbs -r 10.0.0.6:21117
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
+
+  rustdesk-hbbr:
+    image: rustdesk/rustdesk-server:1.1.14
+    container_name: rustdesk-hbbr
+    restart: unless-stopped
+    network_mode: host
+    command: hbbr
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
