@@ -12,6 +12,8 @@ services:
       options:
         max-size: "10m"
         max-file: "5"
+    volumes:
+      - rustdesk-hbbs-data:/root/.config/rustdesk
 
   rustdesk-hbbr:
     image: rustdesk/rustdesk-server:1.1.14
@@ -24,3 +26,6 @@ services:
       options:
         max-size: "10m"
         max-file: "5"
+
+volumes:
+  rustdesk-hbbs-data:
