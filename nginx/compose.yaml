@@ -1,5 +1,4 @@
 services:
-  app:
     image: 'jc21/nginx-proxy-manager:2.12.6
     container_name: nginx-proxy-manager
     restart: unless-stopped
