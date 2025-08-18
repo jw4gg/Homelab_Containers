@@ -1,7 +1,7 @@
 ---
 services:
   jellyfin:
-    image: jellyfin/jellyfin:2025081105
+    image: jellyfin/jellyfin:2025081805
     container_name: jellyfin
     environment:
       - PUID=1000
