@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   openwebui:
-    image: ghcr.io/open-webui/open-webui:0.6.22
+    image: ghcr.io/open-webui/open-webui:0.6.23
     container_name: open-webui
     ports:
       - "3000:8080"
