@@ -70,7 +70,7 @@ services:
         timeout: 10s
     
   prowlarr:
-    image: lscr.io/linuxserver/prowlarr:1.37.0.5076-ls119
+    image: lscr.io/linuxserver/prowlarr:2.0.5.5160-ls127
     container_name: prowlarr
     environment:
       - PUID=1000
@@ -101,7 +101,7 @@ services:
       - 8989:8989
 
   radarr:
-    image: lscr.io/linuxserver/radarr:5.26.2.10099-ls276
+    image: lscr.io/linuxserver/radarr:5.27.5.10198-ls283
     container_name: radarr
     restart: unless-stopped
     environment:
