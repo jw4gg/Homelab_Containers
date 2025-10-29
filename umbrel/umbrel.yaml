@@ -4,7 +4,7 @@ services:
     container_name: umbrel
     pid: host
     ports:
-      - 80:80
+      - 80:82
     volumes:
       - ./umbrel:/data
       - /mnt/downloads:/downloads #location for downloads
