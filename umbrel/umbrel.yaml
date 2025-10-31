@@ -6,8 +6,8 @@ services:
     ports:
       - "80"  # random port, not dealing with it now
     volumes:
-      - /mnt/downloads/umbrel:/data      # ← Entire Umbrel on NAS
-     # - /mnt/downloads:/downloads        # ← downloads need this?
+      - /data/bitcoin:/data/bitcoin
+     # - /mnt/downloads:/downloads
       - /var/run/docker.sock:/var/run/docker.sock
     restart: always
     stop_grace_period: 1m
