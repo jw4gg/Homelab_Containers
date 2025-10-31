@@ -7,7 +7,5 @@ services:
       - "80"  # random port, not dealing with it now
     volumes:
       - /data/bitcoin:/data/bitcoin
-     # - /mnt/downloads:/downloads
-      - /var/run/docker.sock:/var/run/docker.sock
     restart: always
     stop_grace_period: 1m
