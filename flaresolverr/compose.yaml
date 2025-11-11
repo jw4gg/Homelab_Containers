@@ -2,7 +2,7 @@
 
 services:
   flaresolverr:
-    image: ghcr.io/flaresolverr/flaresolverr:v3.4.4
+    image: ghcr.io/flaresolverr/flaresolverr:v3.4.5
     container_name: flaresolverr
     environment:
       - LOG_LEVEL=${LOG_LEVEL:-info}
