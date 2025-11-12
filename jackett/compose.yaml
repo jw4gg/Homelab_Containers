@@ -1,7 +1,7 @@
 ---
 services:
   jacket:
-    image: linuxserver/jackett:0.24.294
+    image: linuxserver/jackett:0.24.296
     container_name: jackett
     environment:
       - PUID=1000
