@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   rustdesk-hbbs:
-    image: rustdesk/rustdesk-server:1.1.14
+    image: rustdesk/rustdesk-server:1.1.15
     container_name: rustdesk-hbbs
     restart: unless-stopped
     network_mode: host
@@ -16,7 +16,7 @@ services:
       - rustdesk-hbbs-data:/root/.config/rustdesk
 
   rustdesk-hbbr:
-    image: rustdesk/rustdesk-server:1.1.14
+    image: rustdesk/rustdesk-server:1.1.15
     container_name: rustdesk-hbbr
     restart: unless-stopped
     network_mode: host
