@@ -1,7 +1,7 @@
 ---
 services:
   homeassistant:
-    image: lscr.io/linuxserver/homeassistant:2026.1.1
+    image: lscr.io/linuxserver/homeassistant:2026.1.2
     container_name: homeassistant
     network_mode: host
     environment:
