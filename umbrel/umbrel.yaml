@@ -4,9 +4,9 @@ services:
     container_name: umbrel
     pid: host
     ports:
-      - "80"  # random port, not dealing with it now
+      - "80" # random port, not dealing with it now
     volumes:
-      - /data:/data/bitcoin
+      - /data/bitcoin:/data
       - /var/run/docker.sock:/var/run/docker.sock
     restart: always
     stop_grace_period: 1m
