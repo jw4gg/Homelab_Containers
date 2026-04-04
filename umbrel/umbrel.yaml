@@ -1,4 +1,4 @@
-YAMLservices:
+services:
   umbrel:
     image: dockurr/umbrel:1.4.0
     container_name: umbrel
