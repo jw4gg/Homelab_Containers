@@ -1,13 +1,13 @@
 ---
 services:
   jellyfin:
-    image: jellyfin/jellyfin:2025120805
+    image: jellyfin/jellyfin:2026040605
     container_name: jellyfin
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Etc/UTC
-      - JELLYFIN_PublishedServerUrl=192.168.1.3 #optional
+      - JELLYFIN_PublishedServerUrl=10.0.0.6 #optional
     volumes:
       - /path/to/library:/config
       - /path/to/tvseries:/data/tvshows
