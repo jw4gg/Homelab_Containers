@@ -2,7 +2,7 @@
 version: "2.1"
 services:
   overseerr:
-    image: lscr.io/linuxserver/overseerr:1.34.0-ls146 
+    image: lscr.io/linuxserver/overseerr:v1.35.0-ls159
     container_name: overseerr
     environment:
       - PUID=1000
