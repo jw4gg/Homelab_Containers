@@ -7,5 +7,5 @@ services:
     restart: unless-stopped
     network_mode: host
     volumes:
-      - ./adguard/work:/opt/adguardhome/work
-      - ./adguard/conf:/opt/adguardhome/conf
+      - /data/adguard/work:/opt/adguardhome/work
+      - /data/adguard/conf:/opt/adguardhome/conf
