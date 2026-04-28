@@ -1,0 +1,29 @@
+version: '3.7'
+
+services:
+  bitcoind:
+    image: lncm/bitcoind:v26.0
+    container_name: bitcoind
+    restart: unless-stopped
+    stop_grace_period: 15m
+    network_mode: host
+    volumes:
+      - /data/bitcoin:/data/.bitcoin
+
+  public-pool:
+    image: ghcr.io/benjamin-wilson/public-pool:latest
+    container_name: public-pool
+    restart: unless-stopped
+    network_mode: host
+    depends_on:
+      - bitcoind
+    environment:
+      - BITCOIN_RPC_URL=http://127.0.0.1
+      - BITCOIN_RPC_PORT=8332
+      - BITCOIN_RPC_USER=bitcoin
+      - BITCOIN_RPC_PASSWORD=${BITCOIN_RPC_PASSWORD}
+      - BITCOIN_ZMQ_HOST=tcp://127.0.0.1:28334
+      - API_PORT=3334
+      - STRATUM_PORT=3333
+      - NETWORK=mainnet
+      - POOL_IDENTIFIER=${POOL_IDENTIFIER}
