@@ -14,7 +14,7 @@ jobs:
       security-events: write
       contents: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Scan compose files for misconfigurations
         uses: aquasecurity/trivy-action@master
@@ -47,7 +47,7 @@ jobs:
     # Only run on schedule or manual trigger to avoid slowing down every push
     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Extract images from compose files
         run: |
