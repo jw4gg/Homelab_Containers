@@ -27,11 +27,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          if git diff --quiet SERVICES.md 2>/dev/null && git ls-files --error-unmatch SERVICES.md 2>/dev/null; then
+          git add SERVICES.md
+          if git diff --cached --quiet; then
             echo "SERVICES.md unchanged, skipping commit."
           else
-            git add SERVICES.md
             git commit -m "chore: update service inventory [skip ci]"
             git push origin main
           fi

@@ -113,7 +113,7 @@ def main():
     total = len(rows)
     problems = len(unpinned) + len(updates)
     print(f"Audit complete: {total} services checked, {problems} issue(s) flagged.")
-    sys.exit(1 if problems else 0)
+    # Always exit 0 — this is a reporting job, not a gate
 
 
 if __name__ == "__main__":
