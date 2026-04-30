@@ -1,0 +1,76 @@
+name: Deploy Notification
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Gather change info
+        id: info
+        run: |
+          stacks=$(git diff --name-only HEAD~1 HEAD -- "**/compose.yaml" \
+            | sed 's|/compose.yaml||' | paste -sd ', ')
+          echo "stacks=${stacks:-none}" >> "$GITHUB_OUTPUT"
+          echo "commit_msg=$(git log -1 --pretty=format:'%s')" >> "$GITHUB_OUTPUT"
+          echo "author=$(git log -1 --pretty=format:'%an')" >> "$GITHUB_OUTPUT"
+          echo "sha_short=$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Send Discord notification
+        if: ${{ secrets.DISCORD_WEBHOOK_URL != '' }}
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          stacks="${{ steps.info.outputs.stacks }}"
+          commit="${{ steps.info.outputs.commit_msg }}"
+          author="${{ steps.info.outputs.author }}"
+          sha="${{ steps.info.outputs.sha_short }}"
+          repo="${{ github.repository }}"
+          run_url="https://github.com/$repo/commit/${{ github.sha }}"
+
+          if [ "$stacks" = "none" ]; then
+            description="No compose file changes in this push."
+            color=8421504
+          else
+            description="Stacks updated: \`$stacks\`"
+            color=3066993
+          fi
+
+          python3 - <<EOF
+          import json, os, urllib.request
+          payload = {
+            "embeds": [{
+              "title": "Homelab Push to main",
+              "description": "$description",
+              "color": $color,
+              "fields": [
+                {"name": "Commit", "value": "$commit", "inline": True},
+                {"name": "Author", "value": "$author", "inline": True},
+                {"name": "SHA",    "value": "\`$sha\`",  "inline": True},
+              ],
+              "url": "$run_url",
+            }]
+          }
+          data = json.dumps(payload).encode()
+          req = urllib.request.Request(
+            os.environ["DISCORD_WEBHOOK_URL"],
+            data=data,
+            headers={"Content-Type": "application/json"},
+            method="POST",
+          )
+          urllib.request.urlopen(req)
+          print("Notification sent.")
+          EOF
+
+      - name: Discord webhook not configured
+        if: ${{ secrets.DISCORD_WEBHOOK_URL == '' }}
+        run: |
+          echo "Skipping Discord notification — add DISCORD_WEBHOOK_URL to repo secrets to enable."
+          echo "Get a webhook URL from: Server Settings > Integrations > Webhooks"
