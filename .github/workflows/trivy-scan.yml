@@ -1,0 +1,105 @@
+name: Trivy Security Scan
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "0 10 * * 1" # Every Monday at 10am UTC
+
+jobs:
+  config-scan:
+    name: Misconfiguration Scan
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Scan compose files for misconfigurations
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: config
+          scan-ref: .
+          format: sarif
+          output: trivy-config.sarif
+          exit-code: "0" # Don't fail the build, just report
+
+      - name: Upload to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        continue-on-error: true # Code Scanning may not be enabled on all plans
+        with:
+          sarif_file: trivy-config.sarif
+          category: trivy-misconfig
+
+      - name: Print misconfiguration summary
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: config
+          scan-ref: .
+          format: table
+          severity: HIGH,CRITICAL
+
+  image-scan:
+    name: Image CVE Scan
+    runs-on: ubuntu-latest
+    # Only run on schedule or manual trigger to avoid slowing down every push
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Extract images from compose files
+        run: |
+          python3 - <<'EOF'
+          import yaml, glob
+          images = set()
+          for f in glob.glob("**/compose.yaml", recursive=True):
+              with open(f) as fh:
+                  d = yaml.safe_load(fh) or {}
+              for svc in (d.get("services") or {}).values():
+                  if svc and "image" in svc:
+                      images.add(svc["image"])
+          with open("images.txt", "w") as out:
+              out.write("\n".join(sorted(images)) + "\n")
+          print(f"Found {len(images)} unique images.")
+          EOF
+          cat images.txt
+
+      - name: Scan images with Trivy
+        run: |
+          mkdir -p trivy-results
+          {
+            echo "# Image CVE Scan Results"
+            echo ""
+            echo "Severity filter: HIGH, CRITICAL"
+            echo ""
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          while IFS= read -r image; do
+            [ -z "$image" ] && continue
+            echo "Scanning: $image"
+            safe=$(echo "$image" | tr '/: ' '___')
+
+            docker run --rm \
+              aquasec/trivy:latest image \
+              --severity HIGH,CRITICAL \
+              --no-progress \
+              --format table \
+              "$image" > "trivy-results/${safe}.txt" 2>&1 || true
+
+            {
+              echo "## \`$image\`"
+              echo '```'
+              head -60 "trivy-results/${safe}.txt"
+              echo '```'
+              echo ""
+            } >> "$GITHUB_STEP_SUMMARY"
+          done < images.txt
+
+      - name: Upload scan results
+        uses: actions/upload-artifact@v4
+        with:
+          name: trivy-image-results
+          path: trivy-results/
+          retention-days: 30

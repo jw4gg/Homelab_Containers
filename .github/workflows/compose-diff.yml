@@ -1,0 +1,109 @@
+name: Compose Diff
+
+on:
+  pull_request:
+    paths:
+      - "**/compose.yaml"
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  diff:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install yq
+        run: |
+          sudo wget -qO /usr/local/bin/yq \
+            https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+          sudo chmod +x /usr/local/bin/yq
+
+      - name: Generate diff summary
+        run: |
+          BASE="${{ github.event.pull_request.base.sha }}"
+          changed=$(git diff --name-only "$BASE" HEAD -- "**/compose.yaml" "compose.yaml")
+
+          {
+            echo "## Docker Compose Changes"
+            echo ""
+
+            if [ -z "$changed" ]; then
+              echo "_No compose file changes detected._"
+            else
+              while IFS= read -r file; do
+                echo "### \`$file\`"
+                echo ""
+
+                services=$(yq '.services | keys | .[]' "$file" 2>/dev/null || true)
+
+                if [ -z "$services" ]; then
+                  echo "_Could not parse services._"
+                  echo ""
+                  continue
+                fi
+
+                rows=""
+                while IFS= read -r svc; do
+                  [ -z "$svc" ] && continue
+                  after=$(yq ".services[\"$svc\"].image // \"—\"" "$file" 2>/dev/null)
+                  before=$(git show "$BASE:$file" 2>/dev/null \
+                    | yq ".services[\"$svc\"].image // \"—\"" 2>/dev/null \
+                    || echo "_(new)_")
+
+                  if [ "$before" != "$after" ]; then
+                    rows+="| \`$svc\` | \`$before\` | \`$after\` |"$'\n'
+                  fi
+                done <<< "$services"
+
+                if [ -n "$rows" ]; then
+                  echo "| Service | Before | After |"
+                  echo "|---------|--------|-------|"
+                  echo "$rows"
+                else
+                  echo "_No image changes — only config updated._"
+                  echo ""
+                fi
+              done <<< "$changed"
+            fi
+          } > summary.md
+
+          cat summary.md
+
+      - name: Post or update PR comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const body = fs.readFileSync('summary.md', 'utf8');
+            const marker = '## Docker Compose Changes';
+
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+
+            const existing = comments.find(c =>
+              c.user.type === 'Bot' && c.body.includes(marker)
+            );
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            }

@@ -1,0 +1,42 @@
+name: Validate Docker Compose Files
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate YAML syntax
+        run: |
+          python3 - <<'EOF'
+          import yaml, sys, glob
+          errors = 0
+          for f in sorted(glob.glob("**/compose.yaml", recursive=True)):
+              try:
+                  with open(f) as fh:
+                      yaml.safe_load(fh)
+                  print(f"✓ {f}")
+              except yaml.YAMLError as e:
+                  print(f"✗ {f}: {e}")
+                  errors += 1
+          sys.exit(errors)
+          EOF
+
+      - name: Validate Docker Compose schema
+        run: |
+          failed=0
+          while IFS= read -r file; do
+            printf "Checking %-45s" "$file ..."
+            if output=$(docker compose -f "$file" config --quiet 2>&1); then
+              echo " ✓"
+            else
+              echo " ✗"
+              echo "$output" | grep -v "variable is not set" | grep -v "is obsolete" | head -20
+              failed=1
+            fi
+          done < <(find . -name "compose.yaml" -not -path "./.git/*" | sort)
+          exit $failed
