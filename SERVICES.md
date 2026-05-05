@@ -1,6 +1,6 @@
 # Service Inventory
 
-_Auto-generated 2026-05-03 16:00 UTC — do not edit manually._
+_Auto-generated 2026-05-05 15:38 UTC — do not edit manually._
 
 **17 services** across **12 stacks**
 
@@ -9,10 +9,10 @@ _Auto-generated 2026-05-03 16:00 UTC — do not edit manually._
 | Service | Container | Image | Ports | Restart |
 |---------|-----------|-------|-------|---------|
 | `deunhealth` | `deunhealth` | `qmcgaw/deunhealth:v0.3.0` | — | `always` |
-| `qbittorrent` | `qbittorrent` | `lscr.io/linuxserver/qbittorrent:5.1.4-r3-ls450` | `8080:8080` `6881:6881` | `unless-stopped` |
-| `prowlarr` | `prowlarr` | `lscr.io/linuxserver/prowlarr:2.3.5.5327-ls142` | `9696:9696` | `unless-stopped` |
-| `sonarr` | `sonarr` | `lscr.io/linuxserver/sonarr:4.0.17.2952-ls305` | `8989:8989` | `unless-stopped` |
-| `radarr` | `radarr` | `lscr.io/linuxserver/radarr:6.1.1.10360-ls299` | `7878:7878` | `unless-stopped` |
+| `qbittorrent` | `qbittorrent` | `lscr.io/linuxserver/qbittorrent:5.1.4-r3-ls453` | `8080:8080` `6881:6881` | `unless-stopped` |
+| `prowlarr` | `prowlarr` | `lscr.io/linuxserver/prowlarr:2.3.5.5327-ls144` | `9696:9696` | `unless-stopped` |
+| `sonarr` | `sonarr` | `lscr.io/linuxserver/sonarr:4.0.17.2952-ls310` | `8989:8989` | `unless-stopped` |
+| `radarr` | `radarr` | `lscr.io/linuxserver/radarr:6.1.1.10360-ls301` | `7878:7878` | `unless-stopped` |
 
 ## flaresolverr
 
