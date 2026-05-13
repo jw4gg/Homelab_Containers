@@ -21,7 +21,7 @@ services:
       - BITCOIN_RPC_PORT=8332
       - BITCOIN_RPC_USER=bitcoin
       - BITCOIN_RPC_PASSWORD=${BITCOIN_RPC_PASSWORD}
-      - BITCOIN_ZMQ_HOST=tcp://127.0.0.1:28334
+      - BITCOIN_ZMQ_HOST=tcp://127.0.0.1:28332
       - API_PORT=3334
       - STRATUM_PORT=3333
       - NETWORK=mainnet
