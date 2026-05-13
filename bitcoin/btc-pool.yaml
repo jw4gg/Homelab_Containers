@@ -28,12 +28,10 @@ services:
       - POOL_IDENTIFIER=${POOL_IDENTIFIER}
 
   public-pool-ui:
-    image: ghcr.io/benjamin-wilson/public-pool-ui:latest
+    image: ghcr.io/sethforprivacy/public-pool-ui:latest
     container_name: public-pool-ui
     restart: unless-stopped
     depends_on:
       - public-pool
     ports:
       - "8081:80"
-    environment:
-      - API_URL=http://10.0.0.6:3334
