@@ -26,6 +26,8 @@ services:
       - STRATUM_PORT=3333
       - NETWORK=mainnet
       - POOL_IDENTIFIER=${POOL_IDENTIFIER}
+      - ENABLE_SOLO=true
+      - ENABLE_PROXY=false
 
   public-pool-ui:
     image: ghcr.io/sethforprivacy/public-pool-ui:latest
