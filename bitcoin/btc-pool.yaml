@@ -35,3 +35,5 @@ services:
       - public-pool
     ports:
       - "8081:80"
+    volumes:
+      - /data/public-pool-ui/Caddyfile:/etc/Caddyfile:ro
