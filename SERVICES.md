@@ -1,6 +1,6 @@
 # Service Inventory
 
-_Auto-generated 2026-05-20 14:51 UTC — do not edit manually._
+_Auto-generated 2026-05-21 05:33 UTC — do not edit manually._
 
 **17 services** across **12 stacks**
 
@@ -48,7 +48,7 @@ _Auto-generated 2026-05-20 14:51 UTC — do not edit manually._
 
 | Service | Container | Image | Ports | Restart |
 |---------|-----------|-------|-------|---------|
-| `jellyfin` | `jellyfin` | `jellyfin/jellyfin:10.11.8` | `8096:8096` `8920:8920` `7359:7359/udp` `1900:1900/udp` | `unless-stopped` |
+| `jellyfin` | `jellyfin` | `jellyfin/jellyfin:10.11.9` | `8096:8096` `8920:8920` `7359:7359/udp` `1900:1900/udp` | `unless-stopped` |
 
 ## nginx
 
