@@ -1,6 +1,6 @@
 # Service Inventory
 
-_Auto-generated 2026-05-26 15:10 UTC — do not edit manually._
+_Auto-generated 2026-05-26 16:45 UTC — do not edit manually._
 
 **17 services** across **12 stacks**
 
@@ -18,7 +18,7 @@ _Auto-generated 2026-05-26 15:10 UTC — do not edit manually._
 
 | Service | Container | Image | Ports | Restart |
 |---------|-----------|-------|-------|---------|
-| `flaresolverr` | `flaresolverr` | `ghcr.io/flaresolverr/flaresolverr:v3.4.6` | `${PORT:-8191}:8191` | `unless-stopped` |
+| `flaresolverr` | `flaresolverr` | `ghcr.io/flaresolverr/flaresolverr:v3.5.0` | `${PORT:-8191}:8191` | `unless-stopped` |
 
 ## heimdall
 
