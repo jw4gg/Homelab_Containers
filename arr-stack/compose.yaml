@@ -43,7 +43,7 @@ services:
 # on unhealthy status. labels allows deunhealth to monitor.
 
   qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent:5.1.4-r3-ls453
+    image: lscr.io/linuxserver/qbittorrent:5.2.1_v2.0.13-ls460
     container_name: qbittorrent
     restart: unless-stopped
     labels:
@@ -70,7 +70,7 @@ services:
         timeout: 10s
     
   prowlarr:
-    image: lscr.io/linuxserver/prowlarr:2.3.5.5327-ls144
+    image: lscr.io/linuxserver/prowlarr:2.4.0.5397-ls149
     container_name: prowlarr
     environment:
       - PUID=1000
@@ -85,7 +85,7 @@ services:
     #network_mode: service:gluetun
 
   sonarr:
-    image: lscr.io/linuxserver/sonarr:4.0.17.2952-ls310
+    image: lscr.io/linuxserver/sonarr:4.0.17.2952-ls313
     container_name: sonarr
     restart: unless-stopped
     environment:
@@ -101,7 +101,7 @@ services:
       - 8989:8989
 
   radarr:
-    image: lscr.io/linuxserver/radarr:6.1.1.10360-ls301
+    image: lscr.io/linuxserver/radarr:6.2.1.10461-ls305
     container_name: radarr
     restart: unless-stopped
     environment:
