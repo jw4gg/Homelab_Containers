@@ -30,7 +30,7 @@ _Auto-generated 2026-06-18 22:53 UTC — do not edit manually._
 
 | Service | Container | Image | Ports | Restart |
 |---------|-----------|-------|-------|---------|
-| `homarr` | `homarr` | `ghcr.io/homarr-labs/homarr:v1.65.0` | `7575:7575` | `unless-stopped` |
+| `homarr` | `homarr` | `ghcr.io/homarr-labs/homarr:v1.66.1` | `7575:7575` | `unless-stopped` |
 
 ## homeassistant
 
