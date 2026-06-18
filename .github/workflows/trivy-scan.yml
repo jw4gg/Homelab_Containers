@@ -12,7 +12,7 @@ jobs:
       security-events: write
       contents: read
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Scan compose files for misconfigurations
         uses: aquasecurity/trivy-action@master
