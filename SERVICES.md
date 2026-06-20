@@ -1,6 +1,6 @@
 # Service Inventory
 
-_Auto-generated 2026-06-19 21:09 UTC — do not edit manually._
+_Auto-generated 2026-06-20 03:23 UTC — do not edit manually._
 
 **17 services** across **12 stacks**
 
@@ -36,7 +36,7 @@ _Auto-generated 2026-06-19 21:09 UTC — do not edit manually._
 
 | Service | Container | Image | Ports | Restart |
 |---------|-----------|-------|-------|---------|
-| `homeassistant` | `homeassistant` | `lscr.io/linuxserver/homeassistant:2026.6.3` | `8123:8123` | `unless-stopped` |
+| `homeassistant` | `homeassistant` | `lscr.io/linuxserver/homeassistant:2026.6.4` | `8123:8123` | `unless-stopped` |
 
 ## jackett
 
