@@ -1,6 +1,6 @@
 # Service Inventory
 
-_Auto-generated 2026-07-02 02:04 UTC — do not edit manually._
+_Auto-generated 2026-07-02 02:05 UTC — do not edit manually._
 
 **17 services** across **12 stacks**
 
@@ -60,7 +60,7 @@ _Auto-generated 2026-07-02 02:04 UTC — do not edit manually._
 
 | Service | Container | Image | Ports | Restart |
 |---------|-----------|-------|-------|---------|
-| `openwebui` | `open-webui` | `ghcr.io/open-webui/open-webui:v0.10.1` | `3030:8080` | `unless-stopped` |
+| `openwebui` | `open-webui` | `ghcr.io/open-webui/open-webui:v0.10.2` | `3030:8080` | `unless-stopped` |
 
 ## overseerr
 
