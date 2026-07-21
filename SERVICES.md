@@ -1,6 +1,6 @@
 # Service Inventory
 
-_Auto-generated 2026-07-21 01:13 UTC — do not edit manually._
+_Auto-generated 2026-07-21 07:00 UTC — do not edit manually._
 
 **17 services** across **12 stacks**
 
@@ -78,6 +78,6 @@ _Auto-generated 2026-07-21 01:13 UTC — do not edit manually._
 
 | Service | Container | Image | Ports | Restart |
 |---------|-----------|-------|-------|---------|
-| `rustdesk-hbbs` | `rustdesk-hbbs` | `rustdesk/rustdesk-server:1.1.15` | — | `unless-stopped` |
-| `rustdesk-hbbr` | `rustdesk-hbbr` | `rustdesk/rustdesk-server:1.1.15` | — | `unless-stopped` |
+| `rustdesk-hbbs` | `rustdesk-hbbs` | `rustdesk/rustdesk-server:1.1.16` | — | `unless-stopped` |
+| `rustdesk-hbbr` | `rustdesk-hbbr` | `rustdesk/rustdesk-server:1.1.16` | — | `unless-stopped` |
 
