@@ -60,7 +60,7 @@ _Auto-generated 2026-07-27 16:13 UTC — do not edit manually._
 
 | Service | Container | Image | Ports | Restart |
 |---------|-----------|-------|-------|---------|
-| `openwebui` | `open-webui` | `ghcr.io/open-webui/open-webui:v0.10.2` | `3030:8080` | `unless-stopped` |
+| `openwebui` | `open-webui` | `ghcr.io/open-webui/open-webui:v0.11.0` | `3030:8080` | `unless-stopped` |
 
 ## overseerr
 
