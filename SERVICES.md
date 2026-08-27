@@ -1,6 +1,6 @@
 # Service Inventory
 
-_Auto-generated 2026-08-26 00:06 UTC — do not edit manually._
+_Auto-generated 2026-08-27 15:06 UTC — do not edit manually._
 
 **17 services** across **12 stacks**
 
@@ -30,7 +30,7 @@ _Auto-generated 2026-08-26 00:06 UTC — do not edit manually._
 
 | Service | Container | Image | Ports | Restart |
 |---------|-----------|-------|-------|---------|
-| `homarr` | `homarr` | `ghcr.io/homarr-labs/homarr:v1.76.0` | `7575:7575` | `unless-stopped` |
+| `homarr` | `homarr` | `ghcr.io/homarr-labs/homarr:v1.76.1` | `7575:7575` | `unless-stopped` |
 
 ## homeassistant
 
@@ -42,7 +42,7 @@ _Auto-generated 2026-08-26 00:06 UTC — do not edit manually._
 
 | Service | Container | Image | Ports | Restart |
 |---------|-----------|-------|-------|---------|
-| `jacket` | `jackett` | `linuxserver/jackett:0.24.2467` | `9117:9117` | `unless-stopped` |
+| `jacket` | `jackett` | `linuxserver/jackett:0.24.2475` | `9117:9117` | `unless-stopped` |
 
 ## jellyfin
 
