@@ -1,6 +1,6 @@
 services:
   umbrel:
-    image: dockurr/umbrel:1.4.0
+    image: dockurr/umbrel:1.7.4
     container_name: umbrel
     pid: host
     ports:
