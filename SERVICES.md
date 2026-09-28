@@ -1,6 +1,6 @@
 # Service Inventory
 
-_Auto-generated 2026-09-28 20:23 UTC — do not edit manually._
+_Auto-generated 2026-09-28 21:12 UTC — do not edit manually._
 
 **17 services** across **12 stacks**
 
@@ -9,10 +9,10 @@ _Auto-generated 2026-09-28 20:23 UTC — do not edit manually._
 | Service | Container | Image | Ports | Restart |
 |---------|-----------|-------|-------|---------|
 | `deunhealth` | `deunhealth` | `qmcgaw/deunhealth:v0.3.0` | — | `always` |
-| `qbittorrent` | `qbittorrent` | `lscr.io/linuxserver/qbittorrent:5.2.3_v2.0.13-ls469` | `8080:8080` `6881:6881` | `unless-stopped` |
-| `prowlarr` | `prowlarr` | `lscr.io/linuxserver/prowlarr:2.5.2.5491-ls155` | `9696:9696` | `unless-stopped` |
-| `sonarr` | `sonarr` | `lscr.io/linuxserver/sonarr:4.0.19.2979-ls320` | `8989:8989` | `unless-stopped` |
-| `radarr` | `radarr` | `lscr.io/linuxserver/radarr:6.3.0.10514-ls312` | `7878:7878` | `unless-stopped` |
+| `qbittorrent` | `qbittorrent` | `lscr.io/linuxserver/qbittorrent:5.2.3_v2.0.15-ls478` | `8080:8080` `6881:6881` | `unless-stopped` |
+| `prowlarr` | `prowlarr` | `lscr.io/linuxserver/prowlarr:2.6.5.5623-ls162` | `9696:9696` | `unless-stopped` |
+| `sonarr` | `sonarr` | `lscr.io/linuxserver/sonarr:4.0.20.3014-ls326` | `8989:8989` | `unless-stopped` |
+| `radarr` | `radarr` | `lscr.io/linuxserver/radarr:6.4.4.10685-ls318` | `7878:7878` | `unless-stopped` |
 
 ## flaresolverr
 
@@ -24,7 +24,7 @@ _Auto-generated 2026-09-28 20:23 UTC — do not edit manually._
 
 | Service | Container | Image | Ports | Restart |
 |---------|-----------|-------|-------|---------|
-| `heimdall` | `heimdall` | `ghcr.io/linuxserver/heimdall:v2.7.6-ls341` | `11080:80` `11443:443` | `always` |
+| `heimdall` | `heimdall` | `ghcr.io/linuxserver/heimdall:v2.8.3-ls365` | `11080:80` `11443:443` | `always` |
 
 ## homarr
 
@@ -48,7 +48,7 @@ _Auto-generated 2026-09-28 20:23 UTC — do not edit manually._
 
 | Service | Container | Image | Ports | Restart |
 |---------|-----------|-------|-------|---------|
-| `jellyfin` | `jellyfin` | `jellyfin/jellyfin:10.11.11` | `8096:8096` `8920:8920` `7359:7359/udp` `1900:1900/udp` | `unless-stopped` |
+| `jellyfin` | `jellyfin` | `jellyfin/jellyfin:12.1` | `8096:8096` `8920:8920` `7359:7359/udp` `1900:1900/udp` | `unless-stopped` |
 
 ## nginx
 
