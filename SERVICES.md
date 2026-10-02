@@ -42,7 +42,7 @@ _Auto-generated 2026-10-02 21:24 UTC — do not edit manually._
 
 | Service | Container | Image | Ports | Restart |
 |---------|-----------|-------|-------|---------|
-| `jacket` | `jackett` | `linuxserver/jackett:0.24.2748` | `9117:9117` | `unless-stopped` |
+| `jacket` | `jackett` | `linuxserver/jackett:0.24.2756` | `9117:9117` | `unless-stopped` |
 
 ## jellyfin
 
