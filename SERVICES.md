@@ -1,6 +1,6 @@
 # Service Inventory
 
-_Auto-generated 2026-10-01 18:16 UTC — do not edit manually._
+_Auto-generated 2026-10-02 21:24 UTC — do not edit manually._
 
 **17 services** across **12 stacks**
 
@@ -30,7 +30,7 @@ _Auto-generated 2026-10-01 18:16 UTC — do not edit manually._
 
 | Service | Container | Image | Ports | Restart |
 |---------|-----------|-------|-------|---------|
-| `homarr` | `homarr` | `ghcr.io/homarr-labs/homarr:v1.77.2` | `7575:7575` | `unless-stopped` |
+| `homarr` | `homarr` | `ghcr.io/homarr-labs/homarr:v2.0.0` | `7575:7575` | `unless-stopped` |
 
 ## homeassistant
 
