@@ -1,6 +1,6 @@
 # Service Inventory
 
-_Auto-generated 2026-10-06 16:42 UTC — do not edit manually._
+_Auto-generated 2026-10-07 14:46 UTC — do not edit manually._
 
 **17 services** across **12 stacks**
 
@@ -42,7 +42,7 @@ _Auto-generated 2026-10-06 16:42 UTC — do not edit manually._
 
 | Service | Container | Image | Ports | Restart |
 |---------|-----------|-------|-------|---------|
-| `jacket` | `jackett` | `linuxserver/jackett:0.24.2798` | `9117:9117` | `unless-stopped` |
+| `jacket` | `jackett` | `linuxserver/jackett:0.24.2800` | `9117:9117` | `unless-stopped` |
 
 ## jellyfin
 
