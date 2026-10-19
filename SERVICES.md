@@ -1,6 +1,6 @@
 # Service Inventory
 
-_Auto-generated 2026-10-17 06:57 UTC — do not edit manually._
+_Auto-generated 2026-10-19 16:22 UTC — do not edit manually._
 
 **17 services** across **12 stacks**
 
@@ -72,7 +72,7 @@ _Auto-generated 2026-10-17 06:57 UTC — do not edit manually._
 
 | Service | Container | Image | Ports | Restart |
 |---------|-----------|-------|-------|---------|
-| `pihole` | `pihole` | `pihole/pihole:2026.09.0` | `53:53/tcp` `53:53/udp` `80:80/tcp` | `unless-stopped` |
+| `pihole` | `pihole` | `pihole/pihole:2026.10.0` | `53:53/tcp` `53:53/udp` `80:80/tcp` | `unless-stopped` |
 
 ## rustdesk-server
 
