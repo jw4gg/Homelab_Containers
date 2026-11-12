@@ -1,6 +1,6 @@
 # Service Inventory
 
-_Auto-generated 2026-11-11 22:41 UTC — do not edit manually._
+_Auto-generated 2026-11-12 06:17 UTC — do not edit manually._
 
 **17 services** across **12 stacks**
 
@@ -54,7 +54,7 @@ _Auto-generated 2026-11-11 22:41 UTC — do not edit manually._
 
 | Service | Container | Image | Ports | Restart |
 |---------|-----------|-------|-------|---------|
-| `nginx-proxy-manager` | `nginx-proxy-manager` | `jc21/nginx-proxy-manager:2.16.0` | `80:80` `443:443` `81:81` | `unless-stopped` |
+| `nginx-proxy-manager` | `nginx-proxy-manager` | `jc21/nginx-proxy-manager:2.17.0` | `80:80` `443:443` `81:81` | `unless-stopped` |
 
 ## open-webui
 
