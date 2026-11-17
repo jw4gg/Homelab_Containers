@@ -1,6 +1,6 @@
 # Service Inventory
 
-_Auto-generated 2026-11-15 16:20 UTC — do not edit manually._
+_Auto-generated 2026-11-17 06:27 UTC — do not edit manually._
 
 **17 services** across **12 stacks**
 
@@ -36,13 +36,13 @@ _Auto-generated 2026-11-15 16:20 UTC — do not edit manually._
 
 | Service | Container | Image | Ports | Restart |
 |---------|-----------|-------|-------|---------|
-| `homeassistant` | `homeassistant` | `lscr.io/linuxserver/homeassistant:2026.11.1` | `8123:8123` | `unless-stopped` |
+| `homeassistant` | `homeassistant` | `lscr.io/linuxserver/homeassistant:2026.11.2` | `8123:8123` | `unless-stopped` |
 
 ## jackett
 
 | Service | Container | Image | Ports | Restart |
 |---------|-----------|-------|-------|---------|
-| `jacket` | `jackett` | `linuxserver/jackett:0.24.3067` | `9117:9117` | `unless-stopped` |
+| `jacket` | `jackett` | `linuxserver/jackett:0.24.3073` | `9117:9117` | `unless-stopped` |
 
 ## jellyfin
 
