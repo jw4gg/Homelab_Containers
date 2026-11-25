@@ -36,7 +36,7 @@ _Auto-generated 2026-11-25 22:30 UTC — do not edit manually._
 
 | Service | Container | Image | Ports | Restart |
 |---------|-----------|-------|-------|---------|
-| `homeassistant` | `homeassistant` | `lscr.io/linuxserver/homeassistant:2026.11.2` | `8123:8123` | `unless-stopped` |
+| `homeassistant` | `homeassistant` | `lscr.io/linuxserver/homeassistant:2026.11.3` | `8123:8123` | `unless-stopped` |
 
 ## jackett
 
